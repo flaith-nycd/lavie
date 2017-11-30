@@ -1,0 +1,24 @@
+# File to update to create the json file
+# To update:
+# lavie --init
+#   or
+# lavie --update
+product:
+  name: lavie (Load a Virtualbox Image Easely)
+  version: 0.3
+  url: "https://github.com/flaith-nycd/lavie"
+access:
+  default: "putty"
+  program:
+    - name: "putty"
+      uri: "C:\\app\\TOOLS\\putty\\PUTTY.EXE"
+    - name: "ssh"
+      uri: "C:\\app\\TOOLS\\git\\usr\\bin\\ssh.exe"
+    # This one is in the PATH
+    - name: "testssh"
+      uri: "testssh"
+env:
+  virtualbox:
+    path_key:
+      - "VBOX_INSTALL_PATH"
+      - "VBOX_MSI_INSTALL_PATH"

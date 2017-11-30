@@ -1,0 +1,46 @@
+{
+    "access.default.program": "putty",
+    "access.ssh": {
+        "program": "C:\\app\\TOOLS\\git\\usr\\bin\\ssh.exe"
+    },
+    "access.putty": {
+        "program": "C:\\app\\TOOLS\\putty\\PUTTY.EXE",
+        "default.session": "Ubuntu 16.04.3 LTS",
+        "sessions": [
+            "CentOS 7",
+            "Nicolas-laptop",
+            "Ubuntu 16.04.3 LTS"
+        ]
+    },
+    "vbox.manager": {
+        "default_vm": "Ubuntu 16.04.3 Server",
+        "key_ip": "/VirtualBox/GuestInfo/Net/0/V4/IP"
+    },
+    "vbox.vms": [
+        {
+            "name": "CentOS 7",
+            "uuid": "8830dc81-b2b2-4444-bbaf-b1106cb35088",
+            "username": "",
+            "password": ""
+        },
+        {
+            "name": "CentOS 7 Original",
+            "uuid": "7def80a8-46f7-4e01-81e8-e65ffa899441",
+            "username": "",
+            "password": ""
+        },
+        {
+            "name": "Ubuntu 16.04.3 Server",
+            "uuid": "480637c2-f996-4dd1-a833-8df4205214e8",
+            "username": "",
+            "password": ""
+
+        },
+        {
+            "name": "Ubuntu 16.04.3 Server Original",
+            "uuid": "b93ead67-428c-4887-ac2f-16fef9ece3ff",
+            "username": "",
+            "password": ""
+        }
+    ]
+}

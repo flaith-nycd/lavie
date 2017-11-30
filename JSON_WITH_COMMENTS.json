@@ -1,0 +1,18 @@
+{
+    // Test with comments inside json
+    "access.default.program": "putty",
+    "access.ssh": {
+        "program": "C:\\app\\TOOLS\\git\\usr\\bin\\ssh.exe"
+    },
+    // Another test with comments inside json
+    "access.putty": {
+        "program": "C:\\app\\TOOLS\\putty\\PUTTY.EXE",
+        "default.session": "Ubuntu 16.04.3 LTS",
+        // Should not be displayed
+        "sessions": [
+            "CentOS 7",
+            "Nicolas-laptop",
+            "Ubuntu 16.04.3 LTS"
+        ]
+    }
+}
