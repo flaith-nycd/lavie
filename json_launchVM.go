@@ -8,36 +8,6 @@ import (
     "os"
 )
 
-/*
-type ConfigVM struct {
-    Access        string          `json:"access.default.program"`
-    Ssh           Ssh             `json:"access.ssh"`
-    Putty         Putty           `json:"access.putty"`
-    VBoxManage    VBoxManage      `json:"VBoxManage"`
-    VirtualBoxVMS []VirtualBoxVMS `json:"VirtualBoxVMS"`
-}
-
-type Ssh struct {
-    Program string `json:"program"`
-}
-
-type Putty struct {
-    Program string `json:"program"`
-    Default string `json:"default.session"`
-    Sessions []string `json:"sessions"`
-}
-
-type VBoxManage struct {
-    DefaultVM string `json:"default_vm"`
-    KeyIP     string `json:"key_ip"`
-}
-
-type VirtualBoxVMS struct {
-    Name string `json:"name"`
-    Uuid string `json:"uuid"`
-}
-*/
-
 func main() {
     // Open our jsonFile
     jsonFile, err := os.Open("LaunchVM.json")

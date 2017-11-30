@@ -17,54 +17,24 @@ func RunningMachine() (error) {
 
 //func ListVM() (string) {
 func ListVM() ([]string) {
-    //value := vbm("list", "vms")
     value, _ := vbmOut("list", "vms")
-    //return value
-    // split and return an string slice
+
+    // split and return a string slice
     listVMS := strings.Split(value, "\n")
     return listVMS
 }
 
-/**
- *
- * FROM https://github.com/riobard/go-virtualbox/blob/master/machine.go
- *
- */
-
-/*
-type MachineState string
-
-const (
-    Poweroff = MachineState("poweroff")
-    Running  = MachineState("running")
-    Paused   = MachineState("paused")
-    Saved    = MachineState("saved")
-    Aborted  = MachineState("aborted")
-)
-
-type Flag int
-*/
+// FROM the help of https://github.com/riobard/go-virtualbox/blob/master/machine.go
 
 // Machine information.
 type Machine struct {
     Name string
     UUID string
-    /*
-        State      MachineState
-        CPUs       uint
-        Memory     uint // main memory (in MB)
-        VRAM       uint // video memory (in MB)
-        CfgFile    string
-        BaseFolder string
-        OSType     string
-        Flag       Flag
-        BootOrder  []string // max 4 slots, each in {none|floppy|dvd|disk|net}
-    */
 }
 
 func ListVMS() ([]*Machine, error) {
     // Create a slice of type Machine
-    allMachines := []*Machine{}
+    var allMachines []*Machine
 
     // Generate our regex
     regexVM := regexp.MustCompile(`"(.+)" {([0-9a-f-]+)}`)

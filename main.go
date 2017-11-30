@@ -95,8 +95,8 @@ func extractJson(filename string) {
 // In 'vboxmanage.go' init() is always called, regardless if there's main or not,
 // so if you import a package that has an init function, it will be executed
 func main() {
-    if vmbox.VBM != "" {
-        fmt.Println("VboxManage is in the following directory:", vmbox.VBM)
+    if vmbox.VBoxManagePath != "" {
+        fmt.Println("VboxManage is in the following directory:", vmbox.VBoxManagePath)
         fmt.Println("----------")
         listVMS, _ := vmbox.ListVMS()
         fmt.Printf("List of %d Virtualbox's VMs:\n", len(listVMS))

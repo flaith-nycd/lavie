@@ -10,7 +10,7 @@ import (
     "runtime"
 )
 
-var VBM string // Path to VBoxManage utility.
+var VBoxManagePath string // Path to VBoxManage utility.
 
 /**
  * The init function
@@ -25,16 +25,15 @@ var VBM string // Path to VBoxManage utility.
  * or repair correctness of the program state before real execution begins.
  */
 func init() {
-    //VBM = "VBoxManage"
-    VBM = ""
+    VBoxManagePath = ""
     //if p := os.Getenv("VBOX_INSTALL_PATH"); p != "" && runtime.GOOS == "windows" {
     if p := os.Getenv("VBOX_MSI_INSTALL_PATH"); p != "" && runtime.GOOS == "windows" {
-        VBM = filepath.Join(p, "VBoxManage.exe")
+        VBoxManagePath = filepath.Join(p, "VBoxManage.exe")
     }
 }
 
 func vbm(args ...string) error {
-    cmd := exec.Command(VBM, args...)
+    cmd := exec.Command(VBoxManagePath, args...)
 
     if err := cmd.Run(); err != nil {
         return err
@@ -43,7 +42,7 @@ func vbm(args ...string) error {
 }
 
 func vbmOut(args ...string) (string, error) {
-    cmd := exec.Command(VBM, args...)
+    cmd := exec.Command(VBoxManagePath, args...)
 
     b, err := cmd.Output()
     return string(b), err

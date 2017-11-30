@@ -43,7 +43,7 @@ func main() {
             Sessions: onePuttySession,
         },
         VBoxManage: vmjson.VBoxManage{
-            Program: vm.VBM,
+            Program: vm.VBoxManagePath,
         },
         VirtualBoxVMS: oneVM,
     }

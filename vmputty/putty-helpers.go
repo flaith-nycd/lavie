@@ -15,7 +15,9 @@ func GetPuttySession() ([]string, int) {
     //key, err := registry.OpenKey(registry.CURRENT_USER, `Software\SimonTatham\PuTTY\Sessions`, registry.QUERY_VALUE)
 
     /********************************
-     USE registry.ALL_ACCESS to avoid
+     USE registry.ALL_ACCESS
+     NOT registry.QUERY_VALUE
+     to avoid:
 
      Access is denied.
 
@@ -37,15 +39,6 @@ func GetPuttySession() ([]string, int) {
         log.Fatal(err)
     }
 
-    /*
-    // Use '_' if we don't need the value after
-    // but function stat() returns 2 values,
-    // so it's mandatory to have 2 variables to get the returned values
-    if _, err = key.Stat(); err != nil {
-        log.Fatal(err)
-    }
-    */
-
     // convert to int to remove error "cannot use count (type uint32) as type int in argument to key.ReadSubKeyNames"
     // count has not be declared, so we use :=
     // We can also do:
@@ -54,10 +47,6 @@ func GetPuttySession() ([]string, int) {
     count := int(keyInfo.SubKeyCount)
 
     if count > 0 {
-        //Sessions := make([]vmjson.Session, 0)
-        //fmt.Println("Putty have", count, "sessions:")
-
-        //sessions, err := key.ReadSubKeyNames(count)
         // If n <= 0, ReadSubKeyNames returns all the names from the key in a single slice
         sessions, err := key.ReadSubKeyNames(-1)
         if err != nil {
@@ -75,7 +64,6 @@ func GetPuttySession() ([]string, int) {
         }
         return returnSessions, count
     } else {
-        //fmt.Println("There is no Putty's sessions available.")
         return nil, 0
     }
 }
