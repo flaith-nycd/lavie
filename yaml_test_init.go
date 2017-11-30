@@ -31,9 +31,8 @@ type VirtualBox struct {
     PathKey []string `yaml:"path_key"`
 }
 
-func (config *ConfigInit) getConf() *ConfigInit {
-
-    yamlFile, err := ioutil.ReadFile("init.yml")
+func (config *ConfigInit) getConf(filename string) *ConfigInit {
+    yamlFile, err := ioutil.ReadFile(filename)
     if err != nil {
         log.Fatalf("# Config file get error\n--> %v", err)
     }
@@ -48,7 +47,7 @@ func (config *ConfigInit) getConf() *ConfigInit {
 
 func main() {
     var conf ConfigInit
-    conf.getConf()
+    conf.getConf("init.yml")
 
     fmt.Println(conf)
     fmt.Printf("Default Access Program: \"%s\"\n", conf.Access.Default)
