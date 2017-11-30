@@ -4,7 +4,7 @@
 #   or
 # lavie --update
 product:
-  name: lavie (Load a Virtualbox Image Easely)
+  name: lavie - Load and Access a Vitualbox Image Easily (WIP)
   version: 0.3
   url: "https://github.com/flaith-nycd/lavie"
 access:
