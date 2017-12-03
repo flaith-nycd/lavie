@@ -37,7 +37,7 @@ func main() {
     // Set main structure ConfigVM
     allVMs := vmjson.ConfigVM{
         Access: "ssh",
-        Ssh:    vmjson.Ssh{Program: "C:\\app\\TOOLS\\git\\usr\\bin\\ssh.exe"},
+        SSH:    vmjson.Ssh{Program: "C:\\app\\TOOLS\\git\\usr\\bin\\ssh.exe"},
         Putty: vmjson.Putty{
             Program:  "C:\\app\\TOOLS\\putty\\PUTTY.EXE",
             Sessions: onePuttySession,

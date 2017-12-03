@@ -69,7 +69,7 @@ func extractJSON(filename string) {
     fmt.Println("Default access entity", configVM.Access)
 
     fmt.Println("access.ssh:")
-    fmt.Println("Program:", configVM.Ssh.Program)
+    fmt.Println("Program:", configVM.SSH.Program)
 
     fmt.Println("access.putty:")
     fmt.Println("Program:", configVM.Putty.Program)
