@@ -9,7 +9,7 @@ import (
 
 type ConfigVM struct {
     Access        string          `json:"access.default.program"`
-    Ssh           Ssh             `json:"access.ssh"`
+    SSH           Ssh             `json:"access.ssh"`
     Putty         Putty           `json:"access.putty"`
     VBoxManage    VBoxManage      `json:"vbox.manager"`
     VirtualBoxVMS []VirtualBoxVMS `json:"vbox.vms"`
@@ -38,7 +38,7 @@ type VirtualBoxVMS struct {
     Password string `json:"password"`
 }
 
-func readJSON(filename string) ([]byte) {
+func readJSON(filename string) []byte {
     // Open our jsonFile
     jsonFile, err := os.Open(filename)
 
