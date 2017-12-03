@@ -1,4 +1,5 @@
 # lavie
+
 **Load and Access a Vitualbox Image Easily** (___WIP___)
 
 For development, I needed an access to a GNU/Linux server, I installed VirtualBox and Putty.
@@ -57,18 +58,18 @@ output.s = ""
 
 Procedure.s _readProgramData(ProgramID.i)
     Protected result.s
-    
+
     *buffer = AllocateMemory(250)
     ReadProgramData(ProgramID, *buffer, 250)
     result = PeekS(*buffer, -1, #PB_Ascii)
     FreeMemory(*buffer)
-    
+
     ProcedureReturn result
 EndProcedure
 
 If OpenConsole("LaunchVM")
     PrintN("LaunchVM v0.16"):PrintN("")
-    
+
     ; First run VM
     PrintN("Waiting for VM " + vm_name + " to power on...")
     VBoxManage_start.i = RunProgram(VBoxManage_dir + VBoxManage_program, parameter_start, "", #PB_Program_Hide | #PB_Program_Wait)
@@ -85,7 +86,7 @@ If OpenConsole("LaunchVM")
             EndIf
             output = ReplaceString(output, Chr(13)+Chr(10), "")
             CloseProgram(VBoxManage_check)
-            
+
             While get_value = #False
                 If output <> "No value set!"
                     get_value = #True
@@ -98,23 +99,23 @@ If OpenConsole("LaunchVM")
                     EndIf
                     output = ReplaceString(output, Chr(13)+Chr(10), "")
                     CloseProgram(VBoxManage_check)
-                    
+
                     If Random(4) = 1 : Print(".") : EndIf
                     ; Just wait a little before checking again
                     Delay(250)
                 EndIf
             Wend
-            
+
             IP.s = Mid(output, 8)
             PrintN("")
             PrintN("IP " + IP + " is UP, ready to connect...")
-            
+
             PrintN("Launching PUTTY with session " + putty_session)
             putty_prg = RunProgram(putty_program_dir + putty_program, putty_parameter, "", #PB_Program_Wait)
             If putty_prg = 0
                 PrintN("ERROR: Cannot launch " + Chr(34) + putty_program_dir + putty_program + Chr(34))
             EndIf
-            
+
             ; Because we're using #PB_Program_Wait for putty, in the console it's waiting
             ; We quitted PUTTY, we can stop the vm
             PrintN("Waiting for VM " + vm_name + " to power off...")
@@ -125,15 +126,20 @@ If OpenConsole("LaunchVM")
     CloseConsole()
 EndIf
 ```
+
 </details>
 
 - - - -
+
 As it only launches ___ONE___ VM with my session I created on Putty, I was thinking to use the registry, json, yaml, ...
 
 Purebasic can handle it, but my code started to be messy :stuck_out_tongue_winking_eye:
 
 So here I am now, and I choose [Golang](https://golang.org/), because I'm starting to learn it and I like it :smile:
+
 - - - -
+
 ## __TO DO__:
+
 - [ ] Create a VM (will become ___clavie___)
 - - - -
