@@ -6,7 +6,7 @@ For development, I needed an access to a GNU/Linux server, I installed VirtualBo
 
 Each time, I have to launch a VM, wait, and then launch Putty (or access with ssh)
 
-So I decided to make a program to do it automatically, I started with [Purebasic](http://www.purebasic.com), 
+So I decided to make a program to do it automatically, I started with [Purebasic](http://www.purebasic.com),
 great and nice language and made a small program to launch my VM automatically
 
 <details><summary markdown="span"><code>LaunchVM.pb source code</code></summary>
@@ -139,7 +139,7 @@ So here I am now, and I choose [Golang](https://golang.org/), because I'm starti
 
 - - - -
 
-## __TO DO__:
+## __TO DO__
 
 - [ ] Create a VM (will become ___clavie___)
 - - - -
