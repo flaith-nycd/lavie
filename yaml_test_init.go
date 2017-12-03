@@ -54,7 +54,6 @@ func main() {
 	var conf ConfigInit
 	conf.getConf("init.yml")
 
-	fmt.Println(conf)
 	fmt.Printf("Default Access Program: \"%s\"\n", conf.Access.Default)
 	for _, val := range conf.Access.Program {
 		if val.Name == conf.Access.Default {
