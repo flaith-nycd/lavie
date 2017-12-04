@@ -5,8 +5,9 @@
 # lavie --update
 product:
   name: lavie - Load and Access a Vitualbox Image Easily (WIP)
-  version: 0.3
+  version: 0.4
   url: "https://github.com/flaith-nycd/lavie"
+  author: Nicolas Djurovic (flaith-nycd)
 access:
   default: "putty"
   program:
