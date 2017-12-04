@@ -139,6 +139,10 @@ So here I am now, and I choose [Golang](https://golang.org/), because I'm starti
 
 - - - -
 
+## __Note:__
+
+`lavie` requires [VM VirtualBox & Extension Pack](https://www.virtualbox.org/wiki/Downloads) to be installed on your machine.
+
 ## __TO DO__
 
 - [ ] Create a VM (will become ___clavie___)
