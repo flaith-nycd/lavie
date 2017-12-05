@@ -2,60 +2,60 @@
 package main
 
 import (
-    "encoding/json"
-    "fmt"
-    "log"
-    "os"
+	"encoding/json"
+	"fmt"
+	"log"
+	"os"
 
-    vm "./vmbox"
-    "./vmjson"
-    putty "./vmputty"
+	vm "./vmbox"
+	"./vmjson"
+	putty "./vmputty"
 )
 
 func main() {
-    // Get putty
-    sessions, count := putty.GetPuttySession()
-    //onePuttySession := make([]vmjson.Session, count)
-    onePuttySession := make([]string, count)
-    if count > 0 {
-        for i, session := range sessions {
-            //onePuttySession[i].Name = session
-            onePuttySession[i] = session
-        }
-    } else {
-        fmt.Println("There is no Putty's sessions available.")
-    }
+	// Get putty
+	sessions, count := putty.GetPuttySession()
+	//onePuttySession := make([]vmjson.Session, count)
+	onePuttySession := make([]string, count)
+	if count > 0 {
+		for i, session := range sessions {
+			//onePuttySession[i].Name = session
+			onePuttySession[i] = session
+		}
+	} else {
+		fmt.Println("There is no Putty's sessions available.")
+	}
 
-    // Get Vms
-    listVMS, _ := vm.ListVMS()
-    oneVM := make([]vmjson.VirtualBoxVMS, len(listVMS))
-    for i, VM := range listVMS {
-        oneVM[i].Name = VM.Name
-        oneVM[i].UUID = VM.UUID
-    }
+	// Get Vms
+	listVMS, _ := vm.ListVMS()
+	oneVM := make([]vmjson.VirtualBoxVMS, len(listVMS))
+	for i, VM := range listVMS {
+		oneVM[i].Name = VM.Name
+		oneVM[i].UUID = VM.UUID
+	}
 
-    // Set main structure ConfigVM
-    allVMs := vmjson.ConfigVM{
-        Access: "ssh",
-        SSH:    vmjson.SSH{Program: "C:\\app\\TOOLS\\git\\usr\\bin\\ssh.exe"},
-        Putty: vmjson.Putty{
-            Program:  "C:\\app\\TOOLS\\putty\\PUTTY.EXE",
-            Sessions: onePuttySession,
-        },
-        VBoxManage: vmjson.VBoxManage{
-            Program: vm.VBoxManagePath,
-        },
-        VirtualBoxVMS: oneVM,
-    }
+	// Set main structure ConfigVM
+	allVMs := vmjson.ConfigVM{
+		Access: "ssh",
+		SSH:    vmjson.SSH{Program: "C:\\app\\TOOLS\\git\\usr\\bin\\ssh.exe"},
+		Putty: vmjson.Putty{
+			Program:  "C:\\app\\TOOLS\\putty\\PUTTY.EXE",
+			Sessions: onePuttySession,
+		},
+		VBoxManage: vmjson.VBoxManage{
+			Program: vm.VBoxManagePath,
+		},
+		VirtualBoxVMS: oneVM,
+	}
 
-    // Generate JSON
-    configVMJson, err := json.MarshalIndent(allVMs, "", "    ")
-    if err != nil {
-        log.Fatal("Cannot encode to JSON ", err)
-    }
+	// Generate JSON
+	configVMJson, err := json.MarshalIndent(allVMs, "", "    ")
+	if err != nil {
+		log.Fatal("Cannot encode to JSON ", err)
+	}
 
-    jsonFile, _ := os.Create("testJson.json")
-    //fmt.Printf("%s", configVMJson)
-    jsonFile.WriteString(fmt.Sprintf("%s", configVMJson))
-    jsonFile.Close()
+	jsonFile, _ := os.Create("testJson.json")
+	//fmt.Printf("%s", configVMJson)
+	jsonFile.WriteString(fmt.Sprintf("%s", configVMJson))
+	jsonFile.Close()
 }

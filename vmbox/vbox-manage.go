@@ -1,10 +1,10 @@
 package vmbox
 
 import (
-    "os"
-    "os/exec"
-    "path/filepath"
-    "runtime"
+	"os"
+	"os/exec"
+	"path/filepath"
+	"runtime"
 )
 
 // VBoxManagePath : Path to VBoxManage utility.
@@ -21,31 +21,31 @@ var VBoxManagePath string
 *
 * Besides initializations that cannot be expressed as declarations, a common use of init functions is to verify
 * or repair correctness of the program state before real execution begins.
-*/
+ */
 func init() {
-    // with the help from https://github.com/riobard/go-virtualbox/blob/master/vbm.go
-    VBoxManagePath = ""
-    //if p := os.Getenv("VBOX_INSTALL_PATH"); p != "" && runtime.GOOS == "windows" {
-    if p := os.Getenv("VBOX_MSI_INSTALL_PATH"); p != "" && runtime.GOOS == "windows" {
-        VBoxManagePath = filepath.Join(p, "VBoxManage.exe")
-    }
+	// with the help from https://github.com/riobard/go-virtualbox/blob/master/vbm.goF
+	VBoxManagePath = ""
+	//if p := os.Getenv("VBOX_INSTALL_PATH"); p != "" && runtime.GOOS == "windows" {
+	if p := os.Getenv("VBOX_MSI_INSTALL_PATH"); p != "" && runtime.GOOS == "windows" {
+		VBoxManagePath = filepath.Join(p, "VBoxManage.exe")
+	}
 }
 
 func vbm(args ...string) error {
-    cmd := exec.Command(VBoxManagePath, args...)
+	cmd := exec.Command(VBoxManagePath, args...)
 
-    return cmd.Run()
-/*     
-    if err := cmd.Run(); err != nil {
-        return err
-    }
-    return nil
-*/
+	return cmd.Run()
+	/*
+	   if err := cmd.Run(); err != nil {
+	       return err
+	   }
+	   return nil
+	*/
 }
 
 func vbmOut(args ...string) (string, error) {
-    cmd := exec.Command(VBoxManagePath, args...)
+	cmd := exec.Command(VBoxManagePath, args...)
 
-    b, err := cmd.Output()
-    return string(b), err
+	b, err := cmd.Output()
+	return string(b), err
 }
