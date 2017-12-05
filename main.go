@@ -86,7 +86,7 @@ func extractJSON(filename string) {
     fmt.Printf("There is %d VMs:\n", count)
     for i := 0; i < count; i++ {
         fmt.Println("    Name:", configVM.VirtualBoxVMS[i].Name)
-        fmt.Println("    UUID:", configVM.VirtualBoxVMS[i].Uuid)
+        fmt.Println("    UUID:", configVM.VirtualBoxVMS[i].UUID)
         fmt.Println("    User:", configVM.VirtualBoxVMS[i].Username)
         fmt.Println("    Pass:", configVM.VirtualBoxVMS[i].Password)
         fmt.Println("----------")

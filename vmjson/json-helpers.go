@@ -7,33 +7,38 @@ import (
     "os"
 )
 
+// ConfigVM : Main structure
 type ConfigVM struct {
     Access        string          `json:"access.default.program"`
-    SSH           Ssh             `json:"access.ssh"`
+    SSH           SSH             `json:"access.ssh"`
     Putty         Putty           `json:"access.putty"`
     VBoxManage    VBoxManage      `json:"vbox.manager"`
     VirtualBoxVMS []VirtualBoxVMS `json:"vbox.vms"`
 }
 
-type Ssh struct {
+// SSH : Name of the program to launch for a ssh access
+type SSH struct {
     Program string `json:"program"`
 }
 
+// Putty structure
 type Putty struct {
     Program  string   `json:"program"`
     Default  string   `json:"default.session"`
     Sessions []string `json:"sessions"`
 }
 
+// VBoxManage structure
 type VBoxManage struct {
     Program   string `json:"program"`
-    DefaultVm string `json:"default.vm"`
-    KeyIp     string `json:"key.ip"`
+    DefaultVM string `json:"default.vm"`
+    KeyIP     string `json:"key.ip"`
 }
 
+// VirtualBoxVMS : Structure of each VM
 type VirtualBoxVMS struct {
     Name     string `json:"name"`
-    Uuid     string `json:"uuid"`
+    UUID     string `json:"uuid"`
     Username string `json:"username"`
     Password string `json:"password"`
 }
@@ -51,20 +56,21 @@ func readJSON(filename string) []byte {
     defer jsonFile.Close()
 
     // read our opened File as a byte array.
-    dataJson, _ := ioutil.ReadAll(jsonFile)
+    dataJSON, _ := ioutil.ReadAll(jsonFile)
 
-    return dataJson
+    return dataJSON
 }
 
+// GetJSON : Exported function
 func GetJSON(filename string) ConfigVM {
-    dataJson := readJSON(filename)
+    dataJSON := readJSON(filename)
 
     // we initialize our configVM as type ConfigVM
     var config ConfigVM
 
     // we unmarshal our byteArray which contains our
     // jsonFile's content into 'configVM' which we defined above
-    if err := json.Unmarshal(dataJson, &config); err != nil {
+    if err := json.Unmarshal(dataJSON, &config); err != nil {
         log.Fatalf("Unmarshal: %v\n", err)
     }
 

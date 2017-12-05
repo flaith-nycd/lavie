@@ -7,9 +7,7 @@ import (
     "golang.org/x/sys/windows/registry"
 )
 
-/**
- * Get registry's keys
- */
+// GetPuttySession : Get registry's keys
 func GetPuttySession() ([]string, int) {
     //key, err := registry.OpenKey(registry.CURRENT_USER, "Software\\SimonTatham\\PuTTY\\Sessions", registry.QUERY_VALUE)
     //key, err := registry.OpenKey(registry.CURRENT_USER, `Software\SimonTatham\PuTTY\Sessions`, registry.QUERY_VALUE)
@@ -63,7 +61,7 @@ func GetPuttySession() ([]string, int) {
             returnSessions = append(returnSessions, session)
         }
         return returnSessions, count
-    } else {
-        return nil, 0
     }
+    
+    return nil, 0
 }

@@ -6,7 +6,7 @@ import (
     "strings"
 )
 
-// To be called from outside, the function must start with a uppercase letter
+// RunningMachine : Get the current running VM
 func RunningMachine() (error) {
     runningVMS := vbm("list", "runningvms")
     if runningVMS != nil {
@@ -15,7 +15,7 @@ func RunningMachine() (error) {
     return nil
 }
 
-//func ListVM() (string) {
+// ListVM : Return simple list of VM
 func ListVM() ([]string) {
     value, _ := vbmOut("list", "vms")
 
@@ -32,6 +32,7 @@ type Machine struct {
     UUID string
 }
 
+// ListVMS : Return a complete list of all the VM with NAME and UUID
 func ListVMS() ([]*Machine, error) {
     // Create a slice of type Machine
     var allMachines []*Machine

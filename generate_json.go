@@ -31,13 +31,13 @@ func main() {
     oneVM := make([]vmjson.VirtualBoxVMS, len(listVMS))
     for i, VM := range listVMS {
         oneVM[i].Name = VM.Name
-        oneVM[i].Uuid = VM.UUID
+        oneVM[i].UUID = VM.UUID
     }
 
     // Set main structure ConfigVM
     allVMs := vmjson.ConfigVM{
         Access: "ssh",
-        SSH:    vmjson.Ssh{Program: "C:\\app\\TOOLS\\git\\usr\\bin\\ssh.exe"},
+        SSH:    vmjson.SSH{Program: "C:\\app\\TOOLS\\git\\usr\\bin\\ssh.exe"},
         Putty: vmjson.Putty{
             Program:  "C:\\app\\TOOLS\\putty\\PUTTY.EXE",
             Sessions: onePuttySession,

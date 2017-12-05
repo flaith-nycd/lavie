@@ -45,7 +45,7 @@ func main() {
     fmt.Printf("There is %d VMs:\n", countVM)
     for i := 0; i < countVM; i++ {
         fmt.Println("    Name:", configVM.VirtualBoxVMS[i].Name)
-        fmt.Println("    UUID:", configVM.VirtualBoxVMS[i].Uuid)
+        fmt.Println("    UUID:", configVM.VirtualBoxVMS[i].UUID)
         fmt.Println("    User:", configVM.VirtualBoxVMS[i].Username)
         fmt.Println("    Pass:", configVM.VirtualBoxVMS[i].Password)
         fmt.Println("----------")
