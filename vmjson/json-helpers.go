@@ -70,7 +70,7 @@ func GetJSON(filename string) ConfigVM {
 
 	// we unmarshal our byteArray which contains our
 	// jsonFile's content into 'configVM' which we defined above
-	if err := json.Unmarshal(dataJSONF, &config); err != nil {
+	if err := json.Unmarshal(dataJSON, &config); err != nil {
 		log.Fatalf("Unmarshal: %v\n", err)
 	}
 

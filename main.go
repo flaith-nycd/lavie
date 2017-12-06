@@ -1,15 +1,15 @@
 /**
   When we launch for the first time, we need to :
-  A - Check if VirtualBox and Putty are installed
+  A - Check if VirtualBox and Putty, Ssh are installed
   B - Always get the list of VM
   C - json file exist?
-  D - If not, ask for installation:
-      List of Virtualbox's VMs:
-          1. "CentOS 7"
-          2. "Ubuntu 16.04.3 Server"
+    D - If not, ask for installation:
+        List of Virtualbox's VMs:
+            1. "CentOS 7"
+            2. "Ubuntu 16.04.3 Server"
 
-      Select the vm to launch: _
-  D - Save new JSON file
+        Select the vm to launch: _
+    D - Save new JSON file
   E - If yes, check if the default vm is still in the list we got from (B)
 */
 package main
