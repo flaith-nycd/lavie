@@ -11,7 +11,7 @@ import (
 
 func main() {
 	// Open our jsonFile
-	jsonFile, err := os.Open("LaunchVM.json")
+	jsonFile, err := os.Open("lavie.json")
 	// if we os.Open returns an error then handle it
 	if err != nil {
 		fmt.Println(err)

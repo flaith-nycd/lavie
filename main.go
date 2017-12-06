@@ -27,7 +27,7 @@ import (
 )
 
 // JSONFILENAME : JSON Filename
-const JSONFILENAME = "LaunchVM.json"
+const JSONFILENAME = "lavie.json"
 
 func readJSON(filename string) {
 	jsonFile, err := os.Open(filename)

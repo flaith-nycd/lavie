@@ -12,11 +12,33 @@ great and nice language and made a small program to launch my VM automatically
 <details><summary markdown="span"><code>LaunchVM.pb source code</code></summary>
 
 ```BlitzBasic
+DataSection
+    Vbom_DS:
+        Data.s "VBOX_INSTALL_PATH", "VBOX_MSI_INSTALL_PATH"
+        Data.s "-1"
+EndDataSection
+
+Define VBoxManage_dir.s
+
+Procedure.s GetVboxDir()
+    Protected.i i
+    Protected.s temp, vbom
+
+    Restore Vbom_DS
+
+    While temp <> "-1"
+        Read.s temp.s
+        vbom = GetEnvironmentVariable(temp)
+        If vbom <> ""
+            Break
+        EndIf
+    Wend
+
+    ProcedureReturn vbom
+EndProcedure
+
 ; For the directory get the env variable:
-; VBOX_INSTALL_PATH or VBOX_MSI_INSTALL_PATH
-;VBoxManage_dir.s = GetEnvironmentVariable("VBOX_INSTALL_PATH")
-VBoxManage_dir.s = GetEnvironmentVariable("VBOX_MSI_INSTALL_PATH")
-;VBoxManage_dir.s = "c:\Program Files\Oracle\VirtualBox\"
+VBoxManage_dir.s = GetVboxDir()
 
 VBoxManage_program.s = "VBoxManage.exe"
 

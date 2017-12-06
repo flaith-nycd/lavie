@@ -23,3 +23,9 @@ env:
     path_key:
       - "VBOX_INSTALL_PATH"
       - "VBOX_MSI_INSTALL_PATH"
+    # If the return value from "guestproperty get <VM> /VirtualBox/GuestInfo/Net/0/V4/IP"
+    # is "No value set!", the vm is still not ready to access
+    guestproperty_return_ip_key: "No value set!"
+    # If after x time, there is no return for the checking process with 'guestproperty_ip_key'
+    # stop and show an error
+    check_time_max: 1m
