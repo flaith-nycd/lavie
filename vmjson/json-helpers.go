@@ -1,10 +1,11 @@
 package vmjson
 
 import (
+	"bufio"
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"os"
+	"regexp"
 )
 
 // ConfigVM : Main structure
@@ -44,6 +45,12 @@ type VirtualBoxVMS struct {
 }
 
 func readJSON(filename string) []byte {
+	//var buffer []byte
+	buffer := make([]byte, 0)
+
+	// Use regex to avoid the comments
+	regexComment := regexp.MustCompile(`(//.*)`)
+
 	// Open our jsonFile
 	jsonFile, err := os.Open(filename)
 
@@ -52,13 +59,27 @@ func readJSON(filename string) []byte {
 		log.Fatal(err)
 	}
 
-	// defer the closing of our jsonFile so that we can parse it later on
-	defer jsonFile.Close()
+	// Create a new Scanner for the file.
+	scanner := bufio.NewScanner(jsonFile)
 
-	// read our opened File as a byte array.
-	dataJSON, _ := ioutil.ReadAll(jsonFile)
+	// Loop over all lines in the file and check them.
+	for scanner.Scan() {
+		line := scanner.Text()
+		// Use the regex for the catched line
+		match := regexComment.FindStringSubmatch(line)
 
-	return dataJSON
+		// Matched, so we jump to the next line, because we don't want to keep the comments for json
+		if match != nil {
+			continue
+		}
+
+		// Now add the current line to a []byte
+		// Need to use "..." as suffix in order to append a slice to another slice
+		// https://golang.org/pkg/builtin/#append
+		buffer = append(buffer, []byte(line)...)
+	}
+
+	return buffer
 }
 
 // GetJSON : Exported function

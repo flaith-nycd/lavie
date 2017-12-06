@@ -1,8 +1,11 @@
 {
+    // Default access program
     "access.default.program": "putty",
+    // One of the program to use to access the vm
     "access.ssh": {
         "program": "C:\\app\\TOOLS\\git\\usr\\bin\\ssh.exe"
     },
+    // Another one
     "access.putty": {
         "program": "C:\\app\\TOOLS\\putty\\PUTTY.EXE",
         "default.session": "Ubuntu 16.04.3 LTS",
@@ -12,6 +15,7 @@
             "Ubuntu 16.04.3 LTS"
         ]
     },
+    // Which vm to use and which key to get the ip with 'guestproperty get'
     "vbox.manager": {
         "default_vm": "Ubuntu 16.04.3 Server",
         "key_ip": "/VirtualBox/GuestInfo/Net/0/V4/IP"

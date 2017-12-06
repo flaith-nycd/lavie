@@ -7,9 +7,9 @@ import (
 	"log"
 	"os"
 
-	vm "./vmbox"
-	"./vmjson"
-	putty "./vmputty"
+	vm "../vmbox"
+	"../vmjson"
+	putty "../vmputty"
 )
 
 func main() {

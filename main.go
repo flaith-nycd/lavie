@@ -20,53 +20,17 @@ import (
 	"./vmbox"
 	"./vmjson"
 	"./vmputty"
-
-	"io"
-	"log"
-	"os"
 )
 
 // JSONFILENAME : JSON Filename
 const JSONFILENAME = "lavie.json"
-
-func readJSON(filename string) {
-	jsonFile, err := os.Open(filename)
-	if err != nil {
-		fmt.Printf("File error: %v\n", err)
-		os.Exit(1)
-	}
-	defer jsonFile.Close()
-
-	// Get the status of the File to get its size
-	fileInfo, err := jsonFile.Stat()
-
-	// define our buffer size here
-	buf := make([]byte, fileInfo.Size())
-
-	// Loop until EOF
-	for {
-		n, err := jsonFile.Read(buf)
-
-		if n > 0 {
-			fmt.Print(string(buf[:n])) // your read buffer.
-		}
-
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			log.Printf("read %d bytes: %v", n, err)
-			break
-		}
-	}
-}
 
 func extractJSON(filename string) {
 	// Open, read and get the structurized data from json file
 	configVM := vmjson.GetJSON(filename)
 
 	// Just print the data we got
-	fmt.Println("Default access entity", configVM.Access)
+	fmt.Println("Default access entity:", configVM.Access)
 
 	fmt.Println("access.ssh:")
 	fmt.Println("Program:", configVM.SSH.Program)
